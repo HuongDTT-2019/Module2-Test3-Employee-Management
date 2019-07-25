@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Employee</title>
+</head>
+<body>
+<div id="wrapper">
+    <h3>Create Employee</h3>
+    <p>
+        <a th:href="@{/employee}"><< Back to list</a>
+    </p>
+
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+    </th:block>
+
+    <div id="content">
+        <div id="form">
+            <form  th:action="@{/save-employee}" th:object="${employee}"
+                   method="POST" novalidate="novalidate" enctype="multipart/form-data">
+
+                <table>
+                    <tr>
+                        <td><label>Name</label></td>
+                        <td><input type="text" th:field="*{name}"></td>
+                    </tr>
+                    <tr>
+                        <td> <label>Birth Date</label></td>
+                        <td> <input type="text" th:field="*{birthDate}" placeholder="mm-dd-yyyy"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Address</label></td>
+                        <td><input type="text" th:field="*{address}"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Images</label></td>
+                        <td><input type="file" th:field="*{images}"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Salary</label></td>
+                        <td><input type="text" th:field="*{salary}"></td>
+                    </tr>
+                    <tr>
+                        <td>Department:</td>
+                        <td>
+                            <select th:field="*{department}">
+                                <option th:each="d : ${department}" th:value="${d.id}" th:text="${d.name}"></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Save"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    </div>
+<footer></footer>
+</body>
+</html>

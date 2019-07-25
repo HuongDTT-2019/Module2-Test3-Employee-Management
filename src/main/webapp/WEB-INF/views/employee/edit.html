@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Employee</title>
+</head>
+<body>
+<div id="wrapper">
+    <h3>Edit Employee</h3>
+    <p>
+        <a th:href="@{/employee}"><< Back to list</a>
+    </p>
+
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+    </th:block>
+
+    <div id="content">
+        <div id="form">
+            <form  th:action="@{/edit-employee}" th:object="${employeeform}"
+                   method="POST" novalidate="novalidate" enctype="multipart/form-data">
+                <input th:type="hidden" name="id" th:field="*{id}">
+                <table>
+                    <tr>
+                        <td></td>
+                        <td><img with="100px" height="100px" th:src="@{'/images/'+${employee.avatar}}" alt="avatar-employee"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Name</label></td>
+                        <td><input type="text" th:field="*{name}"></td>
+                    </tr>
+                    <tr>
+                        <td> <label>Birth Date</label></td>
+                        <td> <input type="text" th:field="*{birthDate}" placeholder="mm-dd-yyyy"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Address</label></td>
+                        <td><input type="text" th:field="*{address}"></td>
+                    </tr>
+                    <tr>
+                        <td>Department:</td>
+                        <td>
+                            <select name="department">
+                                <option th:each="d : ${department}"
+                                        th:value="${d.id}"
+                                        th:text="${d.name}"
+                                        th:selected="(${d.id} == *{department.id})"></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Images</label></td>
+                        <td><input type="file" th:field="*{images}"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Salary</label></td>
+                        <td><input type="text" th:field="*{salary}"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Save"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+<footer></footer>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Result</title>
+</head>
+<body>
+<p>
+    <a th:href="@{/employee}"><< Back to list</a>
+</p>
+<h1>Search Result</h1>
+ <h2>Department: <span th:text="${departments.name}"></span></h2>
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Birth Date</th>
+        <th>Address</th>
+        <th>Department</th>
+        <th>Avatar</th>
+        <th>Salary</th>
+    </tr>
+    <th:block th:each="employees :${employee}">
+        <tr>
+            <td th:text="${employees.name}"></td>
+            <td th:text="${employees.birthDate}"></td>
+            <td th:text="${employees.address}"></td>
+            <td th:text="${employees.department.name}"></td>
+            <td><img with="100px" height="100px" th:src="@{'/images/'+${employees.avatar}}" alt="avatar-employee"></td>
+            <td th:text="${employees.salary}"></td>
+            <td><a th:href="@{/edit-employee/__${employees.id}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-employee/__${employees.id}__ }">Delete</a></td>
+
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

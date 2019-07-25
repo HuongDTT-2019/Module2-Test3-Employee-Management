@@ -1,0 +1,92 @@
+package com.codegym.model;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import java.time.LocalDate;
+
+public class EmployeeForm {
+    private Long id;
+    private String name;
+    private LocalDate birthDate;
+    private String address;
+    private MultipartFile images;
+    private float salary;
+    private Department department;
+
+    public EmployeeForm() {
+    }
+    public EmployeeForm(String name, LocalDate birthDate, String address, MultipartFile images, float salary,Department department) {
+        this.name = name;
+        this.birthDate = birthDate;
+        this.address = address;
+        this.images = images;
+        this.salary = salary;
+        this.department = department;
+    }
+
+    public EmployeeForm(Long id, String name, LocalDate birthDate, String address, MultipartFile images, float salary, Department department) {
+        this.id = id;
+        this.name = name;
+        this.birthDate = birthDate;
+        this.address = address;
+        this.images = images;
+        this.salary = salary;
+        this.department = department;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public MultipartFile getImages() {
+        return images;
+    }
+
+    public void setImages(MultipartFile images) {
+        this.images = images;
+    }
+
+    public float getSalary() {
+        return salary;
+    }
+
+    public void setSalary(float salary) {
+        this.salary = salary;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+}
